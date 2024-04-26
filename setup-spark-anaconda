@@ -1,0 +1,35 @@
+Windows: (keep scrolling for MacOS and Linux)
+Install a JDK (Java Development Kit) from http://www.oracle.com/technetwork/java/javase/downloads/index.html . SPARK IS ONLY COMPATIBLE WITH JAVA 8, 11, OR 17 at this time. DO NOT INSTALL JAVA 21+.
+Download a pre-built version of Apache Spark 3 from https://spark.apache.org/downloads.html
+If necessary, download and install WinRAR so you can extract the .tgz file you downloaded. http://www.rarlab.com/download.htm
+Extract the Spark archive, and copy its contents into C:\spark after creating that directory. You should end up with directories like c:\spark\bin, c:\spark\conf, etc.
+Open the the c:\spark\conf folder, and make sure “File Name Extensions” is checked in the “view” tab of Windows Explorer. Rename the log4j2.properties.template file to log4j2.properties. Edit this file (using Wordpad or something similar) and change the error level from “info” to “error” for log4j.rootCategory
+Right-click your Windows menu, select Control Panel, System and Security, and then System. Click on “Advanced System Settings” and then the “Environment Variables” button.
+
+Add the following new USER variables:
+SPARK_HOME >> c:\spark
+PYSPARK_PYTHON >> python
+Add the following path to your PATH user variable:
+%SPARK_HOME%\bin
+
+Close the environment variable screen and the control panels.
+Install the latest Anaconda for Python 3 from anaconda.com.  If you already use some other Python environment, that’s OK – you can use it instead, as long as it is a Python 3 environment.
+Open Anaconda prompt & install pyspark & openjdk : 
+
+Install Java using : 
+conda install openjdk
+
+Install PySpark using the Python package manager pip:
+pip install findspark
+pip install pyspark 
+( Note : Type Pyspark,  At this point you should have a >>> prompt. If not, then untar/unzip pyspark from the C:\spark\lib or the destaination where it got donwloaded ) 
+
+Test it out!
+Open up your Start menu and select “Anaconda Prompt” from the Anaconda3 menu.
+Enter cd c:\spark and then dir to get a directory listing.
+Look for a text file we can play with, like README.md or CHANGES.txt
+Enter pyspark
+At this point you should have a >>> prompt. If not, double check the steps above.
+Enter rdd = sc.textFile(“README.md”) (or whatever text file you’ve found) Enter rdd.count()
+You should get a count of the number of lines in that file! Congratulations, you just ran your first Spark program!
+Enter quit() to exit the spark shell, and close the console window
